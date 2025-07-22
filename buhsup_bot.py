@@ -89,8 +89,8 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         }
         category_name = category_map[category_key]
         keyboard = [
-            [InlineKeyboardButton("Создать счет", callback_data=f"create_invoice_{category_key}"),
-             InlineKeyboardButton("Проверить счет", callback_data=f"check_invoice_{category_key}")],
+            [InlineKeyboardButton("Поставить в график платежей", callback_data=f"create_invoice_{category_key}"),
+             InlineKeyboardButton("Счет согласован\nСрочная оплата", callback_data=f"check_invoice_{category_key}")],
             [InlineKeyboardButton("Назад", callback_data="scheta")]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
@@ -144,7 +144,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             parts = data.split('_')
             category_key = parts[2]
             action_type = parts[0] + '_' + parts[1]
-            action_text = 'Создать счет' if parts[0] == 'create' else 'Проверить счет'
+            action_text = 'Поставить в график платежей' if parts[0] == 'create' else 'Счет согласован'
             ticket_type = 'Счета'
 
         # Генерируем уникальный ID заявки
